@@ -1,0 +1,79 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.8302773426424676,
+      "y": 6.621971013811542
+    },
+    "rotation": 60.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shooterSubSpeed"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armSubShootPosition"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpStart to C2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C2 to AmpStart"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armAutoAndShoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpStart to AmpFind"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "findNote"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpPickup to AmpShoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

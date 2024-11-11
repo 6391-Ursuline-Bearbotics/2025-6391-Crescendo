@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.7389631054469707,
+        "y": 6.904378601165269
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.71464922302042,
+        "y": 6.82880935268597
+      },
+      "isLocked": false,
+      "linkedName": "1 Shoot"
+    },
+    {
+      "anchor": {
+        "x": 5.8471189572075035,
+        "y": 6.652614092348042
+      },
+      "prevControl": {
+        "x": 4.977458056278006,
+        "y": 6.729259679516508
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "AmpFind"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 2.0,
+    "rotation": 0.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": 36.384351815835956,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

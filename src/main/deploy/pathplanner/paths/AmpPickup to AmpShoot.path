@@ -1,0 +1,76 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.8471189572075035,
+        "y": 6.652614092348042
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.3833562123671674,
+        "y": 6.837639753031757
+      },
+      "isLocked": false,
+      "linkedName": "AmpFind"
+    },
+    {
+      "anchor": {
+        "x": 0.8302773426424676,
+        "y": 6.621971013811542
+      },
+      "prevControl": {
+        "x": 1.4464170893229107,
+        "y": 8.485798375688539
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "AmpStart"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.6,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "EnableCamera",
+      "waypointRelativePos": 0.25,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "enableCamera"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 60.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": 0.0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

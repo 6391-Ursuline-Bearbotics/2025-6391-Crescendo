@@ -1,0 +1,85 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.8010627646403579,
+      "y": 4.411401278318571
+    },
+    "rotation": -60.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shooterSubSpeed"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armSubShootPosition"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourceStart to C4"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C4 to SourceStart"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armAutoAndShoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourceStart to SourceFind"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "findNote"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourcePickup to SourceShoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armAutoAndShoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
