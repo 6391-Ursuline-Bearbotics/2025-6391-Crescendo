@@ -84,7 +84,7 @@ public class Arm extends SubsystemBase {
 
     // Setting up the onboard PID controller on the SparkMAX
     armConfig.closedLoop.pid(1.2, 0.0, 0.2);
-    //m_pidController = m_motor.getPIDController();
+    m_pidController = m_motor.getClosedLoopController();
     //m_pidController.setP(1.2); // 2
     //m_pidController.setI(0.0000);
     //m_pidController.setD(.2); //.5
