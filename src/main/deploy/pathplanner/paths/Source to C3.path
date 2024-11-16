@@ -1,5 +1,5 @@
 {
-  "version": 1.0,
+  "version": "2025.0",
   "waypoints": [
     {
       "anchor": {
@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8430493800489387,
-        "y": 1.5873254047812955
+        "x": 1.8430493800489385,
+        "y": 1.587325404781296
       },
       "isLocked": false,
       "linkedName": "SourceStart"
@@ -47,15 +47,16 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.55,
-      "rotationDegrees": 8.684037211909187,
-      "rotateFast": false
+      "rotationDegrees": 8.684037211909187
     }
   ],
   "constraintZones": [],
+  "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "Intake",
       "waypointRelativePos": 0.75,
+      "endWaypointRelativePos": null,
       "command": {
         "type": "parallel",
         "data": {
@@ -79,6 +80,7 @@
     {
       "name": "After Intake",
       "waypointRelativePos": 1.4,
+      "endWaypointRelativePos": null,
       "command": {
         "type": "parallel",
         "data": {
@@ -96,6 +98,7 @@
     {
       "name": "Shoot",
       "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
       "command": {
         "type": "sequential",
         "data": {
@@ -127,18 +130,19 @@
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -5.572197803963805,
-    "rotateFast": false
+    "rotation": -5.572197803963805
   },
   "reversed": false,
   "folder": null,
-  "previewStartingState": {
-    "rotation": -60.0,
-    "velocity": 0.0
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
   },
   "useDefaultConstraints": false
 }

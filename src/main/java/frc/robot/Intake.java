@@ -5,9 +5,11 @@
 package frc.robot;
 
 import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -26,7 +28,7 @@ public class Intake extends SubsystemBase {
   private static final double intakeSlowSpeed = 0.15; // Minimum speed required to move the note
   private DigitalInput noteSlowSensor = new DigitalInput(intakeSlowSensorPort);
   private DigitalInput noteStopSensor = new DigitalInput(intakeStopSensorPort);
-  private SparkBaseConfig sparkConfig;
+  private static final SparkBaseConfig sparkConfig = new SparkMaxConfig();
 
   /** Creates a new Arm. */
   public Intake() {
@@ -34,7 +36,7 @@ public class Intake extends SubsystemBase {
     m_motor = new SparkMax(intakePrimaryID, MotorType.kBrushless);
     sparkConfig.idleMode(IdleMode.kBrake);
     sparkConfig.voltageCompensation(12);
-    m_motor.configure(sparkConfig, null, PersistMode.kPersistParameters);
+    m_motor.configure(sparkConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     m_motor.setInverted(true);
   }

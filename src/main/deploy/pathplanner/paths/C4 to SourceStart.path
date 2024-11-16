@@ -1,5 +1,5 @@
 {
-  "version": 1.0,
+  "version": "2025.0",
   "waypoints": [
     {
       "anchor": {
@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.0878903299647344,
-        "y": 0.941479020617682
+        "x": 4.087890329964735,
+        "y": 0.9414790206176815
       },
       "isLocked": false,
       "linkedName": "C4"
@@ -20,8 +20,8 @@
         "y": 4.411401278318571
       },
       "prevControl": {
-        "x": 3.255087316817576,
-        "y": 2.0547586528150523
+        "x": 3.2550873168175762,
+        "y": 2.054758652815052
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,10 +30,12 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
+  "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "Enable Camera",
       "waypointRelativePos": 0.4,
+      "endWaypointRelativePos": null,
       "command": {
         "type": "parallel",
         "data": {
@@ -53,18 +55,19 @@
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
   },
   "goalEndState": {
     "velocity": 0.0,
-    "rotation": -60.0,
-    "rotateFast": false
+    "rotation": -59.99999999999999
   },
   "reversed": false,
   "folder": null,
-  "previewStartingState": {
-    "rotation": 0.0,
-    "velocity": 0
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

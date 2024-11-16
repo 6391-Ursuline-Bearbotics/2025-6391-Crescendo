@@ -1,5 +1,5 @@
 {
-  "version": 1.0,
+  "version": "2025.0",
   "waypoints": [
     {
       "anchor": {
@@ -24,8 +24,8 @@
         "y": 4.0953194633662005
       },
       "nextControl": {
-        "x": 8.331362842636349,
-        "y": 5.8792473915883905
+        "x": 8.396224296894102,
+        "y": 5.990438456030252
       },
       "isLocked": false,
       "linkedName": "C2"
@@ -36,7 +36,7 @@
         "y": 5.595244965087426
       },
       "prevControl": {
-        "x": 5.079825432378137,
+        "x": 5.079825432378136,
         "y": 7.2857505715011435
       },
       "nextControl": null,
@@ -47,15 +47,16 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.7,
-      "rotationDegrees": 47.7263109939064,
-      "rotateFast": false
+      "rotationDegrees": 47.7263109939064
     }
   ],
   "constraintZones": [],
+  "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "Intake",
       "waypointRelativePos": 0.65,
+      "endWaypointRelativePos": null,
       "command": {
         "type": "parallel",
         "data": {
@@ -77,25 +78,9 @@
       }
     },
     {
-      "name": "Shoot",
-      "waypointRelativePos": 2.0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "shoot"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "Arm to Shoot",
       "waypointRelativePos": 1.3,
+      "endWaypointRelativePos": null,
       "command": {
         "type": "parallel",
         "data": {
@@ -109,24 +94,43 @@
           ]
         }
       }
+    },
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "shoot"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
-    "rotateFast": false
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": null,
-  "previewStartingState": {
-    "rotation": 0.0,
-    "velocity": 0
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }
