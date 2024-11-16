@@ -6,9 +6,16 @@ package frc.robot;
 
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkAbsoluteEncoder;
+import com.revrobotics.spark.SparkBase.ControlType;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkLowLevel.PeriodicFrame;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -26,9 +33,9 @@ public class Arm extends SubsystemBase {
   private static final int armPrimaryID = 2;
   private static final int armFollowerID = 1;
   private SparkMax m_motor;
+  private static final SparkMaxConfig armConfig = new SparkMaxConfig();
   private SparkMax m_follower;
   private SparkClosedLoopController m_pidController;
-  private RelativeEncoder m_relativeEncoder;
   private SparkAbsoluteEncoder m_absoluteEncoder;
   private ArmFeedforward m_armFF;
   private Boolean disabled = false;
@@ -57,35 +64,41 @@ public class Arm extends SubsystemBase {
     // initialize 2 NEO in follower setup
     m_motor = new SparkMax(armPrimaryID, MotorType.kBrushless);
     m_follower = new SparkMax(armFollowerID, MotorType.kBrushless);
-    m_motor.restoreFactoryDefaults();
-    m_follower.restoreFactoryDefaults();
+    //m_motor.restoreFactoryDefaults();
+    //m_follower.restoreFactoryDefaults();
     //m_motor.setSmartCurrentLimit(50);
     //m_follower.setSmartCurrentLimit(50);
-    m_motor.setInverted(true);
-    m_motor.setIdleMode(IdleMode.kBrake);
-    m_motor.setPeriodicFramePeriod(PeriodicFrame.kStatus5,20); // set status 5 periodic to 20ms
-    m_follower.setIdleMode(IdleMode.kBrake);
-    m_follower.follow(m_motor, true);
+    //m_motor.setInverted(true);
+    armConfig.inverted(true);
+    armConfig.idleMode(IdleMode.kBrake);
+    armConfig.signals.absoluteEncoderPositionAlwaysOn(true);
+    //m_motor.setPeriodicFramePeriod(PeriodicFrame.kStatus5,20); // set status 5 periodic to 20ms
+    //m_follower.follow(m_motor, true);
 
-    // Get integrated NEO encoder
-    m_relativeEncoder = m_motor.getEncoder();
     // REV Throughbore encoder hooked to SparkMAX using the Absolute Encoder Adapter
-    m_absoluteEncoder = m_motor.getAbsoluteEncoder(SparkAbsoluteEncoder.Type.kDutyCycle);
-    m_absoluteEncoder.setInverted(true);
-    m_absoluteEncoder.setZeroOffset(kArmOffsetRads);
+    m_absoluteEncoder = m_motor.getAbsoluteEncoder();
+    armConfig.absoluteEncoder.inverted(true);
+    armConfig.absoluteEncoder.zeroOffset(kArmOffsetRads);
+    //m_absoluteEncoder.setInverted(true);
+    //m_absoluteEncoder.setZeroOffset(kArmOffsetRads);
 
     // Setting up the onboard PID controller on the SparkMAX
-    m_pidController = m_motor.getPIDController();
-    m_pidController.setP(1.2); // 2
-    m_pidController.setI(0.0000);
-    m_pidController.setD(.2); //.5
-    m_pidController.setIZone(0);
-    m_pidController.setFF(0);
-//    m_pidController.setOutputRange(-0.12, 0.22); //allowed output of arm
-    m_pidController.setFeedbackDevice(m_absoluteEncoder);
+    armConfig.closedLoop.pid(1.2, 0.0, 0.2);
+    //m_pidController = m_motor.getPIDController();
+    //m_pidController.setP(1.2); // 2
+    //m_pidController.setI(0.0000);
+    //m_pidController.setD(.2); //.5
+    //m_pidController.setIZone(0);
+    //m_pidController.setFF(0);
+    //m_pidController.setOutputRange(-0.12, 0.22); //allowed output of arm
+    armConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+    //m_pidController.setFeedbackDevice(m_absoluteEncoder);
 
-    m_motor.burnFlash();
-    m_follower.burnFlash();
+    m_motor.configure(armConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    armConfig.follow(m_motor, true);
+    m_follower.configure(armConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    //m_motor.burnFlash();
+    //m_follower.burnFlash();
 
     sysIdRoutine = new SysIdRoutine(
                 new SysIdRoutine.Config(),

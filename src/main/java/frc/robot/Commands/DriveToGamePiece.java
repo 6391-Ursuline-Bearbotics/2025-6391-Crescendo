@@ -76,7 +76,7 @@ public class DriveToGamePiece extends Command {
     }
 
     SmartDashboard.putNumber("notescaled", xScaled);
-    drivetrain.setControl(drive.withVelocityX(xScaled * TunerConstants.kSpeedAt12VoltsMps).withVelocityY(yOutput).withRotationalRate(thetaOutput));
+    drivetrain.setControl(drive.withVelocityX(xScaled * TunerConstants.kSpeedAt12Volts.magnitude()).withVelocityY(yOutput).withRotationalRate(thetaOutput));
   }
 
   // Called once the command ends or is interrupted.

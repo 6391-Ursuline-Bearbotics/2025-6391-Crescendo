@@ -47,7 +47,7 @@ public class RobotContainer {
   private SendableChooser<Command> autoChooser;
   private SendableChooser<String> controlChooser = new SendableChooser<>();
   private SendableChooser<Double> speedChooser = new SendableChooser<>();
-  private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // Initial max is true top speed
+  private double MaxSpeed = TunerConstants.kSpeedAt12Volts.magnitude(); // Initial max is true top speed
   private final double TurtleSpeed = 0.1; // Reduction in speed from Max Speed, 0.1 = 10%
   private final double MaxAngularRate = Math.PI * 1.5; // .75 rotation per second max angular velocity.  Adjust for max turning rate speed.
   private final double TurtleAngularRate = Math.PI * 0.5; // .25 rotation per second max angular velocity.  Adjust for max turning rate speed.
@@ -111,7 +111,7 @@ public class RobotContainer {
     // Detect if controllers are missing / Stop multiple warnings
     DriverStation.silenceJoystickConnectionWarning(true);
 
-    drivetrain = TunerConstants.DriveTrain; // Make Drivetrain after Named Commands
+    drivetrain = TunerConstants.createDrivetrain();
     shooterCamera = new Limelight(drivetrain, "limelight-tag");
     findNote = arm.setIntakePosition().andThen(intake.intakeOn()).andThen(new DriveToGamePiece(drivetrain, intakeCamera))
         .until(() -> SmartDashboard.getBoolean("noteLoaded", false))
@@ -237,10 +237,10 @@ public class RobotContainer {
 
     // Turtle Mode toggle
     drv.leftBumper().onTrue(either(
-        runOnce(() -> MaxSpeed = TunerConstants.kSpeedAt12VoltsMps * TurtleSpeed)
+        runOnce(() -> MaxSpeed = MaxSpeed * TurtleSpeed)
             .andThen(() -> AngularRate = TurtleAngularRate)
             .alongWith(runOnce(() -> turtle = false)),
-        runOnce(() -> MaxSpeed = TunerConstants.kSpeedAt12VoltsMps * speedChooser.getSelected())
+        runOnce(() -> MaxSpeed = MaxSpeed * speedChooser.getSelected())
             .andThen(() -> AngularRate = MaxAngularRate)
             .alongWith(runOnce(() -> turtle = true)),
         () -> turtle));
@@ -389,7 +389,7 @@ public class RobotContainer {
 
   private void newSpeed() {
     lastSpeed = speedChooser.getSelected();
-    MaxSpeed = TunerConstants.kSpeedAt12VoltsMps * lastSpeed;
+    MaxSpeed = MaxSpeed * lastSpeed;
   }
 
   private double conditionX(double joystick) {
