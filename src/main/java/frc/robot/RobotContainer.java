@@ -16,6 +16,7 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -43,6 +44,7 @@ import frc.robot.Vision.Detector;
 import frc.robot.Vision.Limelight;
 import frc.robot.generated.TunerConstants;
 
+@Logged
 public class RobotContainer {
   private SendableChooser<Command> autoChooser;
   private SendableChooser<String> controlChooser = new SendableChooser<>();

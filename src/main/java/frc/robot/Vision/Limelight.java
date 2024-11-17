@@ -6,6 +6,7 @@ package frc.robot.Vision;
 
 import static edu.wpi.first.wpilibj2.command.Commands.waitSeconds;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -23,6 +24,7 @@ import frc.robot.CommandSwerveDrivetrain;
 import frc.robot.Util.RectanglePoseArea;
 import frc.robot.Vision.LimelightHelpers.RawFiducial;
 
+@Logged
 public class Limelight extends SubsystemBase {
   CommandSwerveDrivetrain drivetrain;
   private String ll = "limelight";

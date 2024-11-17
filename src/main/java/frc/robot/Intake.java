@@ -12,12 +12,14 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.SparkMax;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
+@Logged
 public class Intake extends SubsystemBase {
   private static final int intakePrimaryID = 5;
   private static final int intakeSlowSensorPort = 1;

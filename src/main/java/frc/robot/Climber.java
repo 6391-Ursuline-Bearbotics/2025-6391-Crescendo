@@ -11,9 +11,11 @@ import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+@Logged
 public class Climber extends SubsystemBase {
   private final TalonFX m_climbMotor = new TalonFX(6);
   private final VoltageOut m_climbRequest = new VoltageOut(0);

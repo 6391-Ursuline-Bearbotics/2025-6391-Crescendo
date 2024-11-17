@@ -17,6 +17,7 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,6 +30,7 @@ import frc.robot.Util.InterpolatingTable;
 
 import static edu.wpi.first.units.Units.*;
 
+@Logged
 public class Arm extends SubsystemBase {
   private static final int armPrimaryID = 2;
   private static final int armFollowerID = 1;

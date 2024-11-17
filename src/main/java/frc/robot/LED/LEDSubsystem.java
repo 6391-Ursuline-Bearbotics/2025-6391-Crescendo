@@ -1,11 +1,13 @@
 package frc.robot.LED;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+@Logged
 public class LEDSubsystem extends SubsystemBase {
   private final int PWMPORT = 1;
   private final int LEDLENGTH = 20;

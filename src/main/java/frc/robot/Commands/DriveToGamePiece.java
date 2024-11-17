@@ -7,6 +7,7 @@ package frc.robot.Commands;
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Timer;
@@ -16,7 +17,7 @@ import frc.robot.CommandSwerveDrivetrain;
 import frc.robot.Vision.Detector;
 import frc.robot.generated.TunerConstants;
 
-/** Add your docs here. */
+@Logged
 public class DriveToGamePiece extends Command {
 
   private Detector ll;
