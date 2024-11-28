@@ -72,7 +72,6 @@ public class Robot extends TimedRobot {
 
     m_robotContainer.shooterCamera.useLimelight(true);
     stopAll();
-    m_robotContainer.createIntakeTrigger();
 
     // Allows the simulation sensor to work on the proper side of the field
     m_robotContainer.colorReceived(DriverStation.getAlliance().orElse(Alliance.Blue));

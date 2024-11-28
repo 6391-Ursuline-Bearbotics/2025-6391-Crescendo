@@ -15,6 +15,7 @@ import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.events.EventTrigger;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.filter.SlewRateLimiter;
@@ -131,25 +132,23 @@ public class RobotContainer {
 
     // Create PathPlanner Named Commands for use in Autos
     robo = new RoboticPathing();
-    NamedCommands.registerCommand("shooterAutoSpeed", shooter.setAutoSpeed());
-    NamedCommands.registerCommand("shooterSubSpeed", shooter.setSubSpeed());
-    NamedCommands.registerCommand("shooterStageSpeed", shooter.setStageSpeed());
-    NamedCommands.registerCommand("shooterAmpSpeed", shooter.setAmpSpeed());
-    NamedCommands.registerCommand("shooterOffSpeed", shooter.setOffSpeed());
-    NamedCommands.registerCommand("shoot", intake.shoot());
-    NamedCommands.registerCommand("armIntakePosition", arm.setIntakePosition());
-    NamedCommands.registerCommand("armStageShootPosition", arm.setStageShootPosition());
-    NamedCommands.registerCommand("armAutoShootPosition", arm.setAutoShootPosition());
-    NamedCommands.registerCommand("armSubShootPosition", arm.setSubShootPosition());
-    NamedCommands.registerCommand("armAmpPosition", arm.setAmpPosition());
-    NamedCommands.registerCommand("intakeOn", intake.intakeAutoStop());
-    NamedCommands.registerCommand("intakeSlow", intake.intakeSlow());
-    NamedCommands.registerCommand("armAutoAndShoot", armAutoAndShoot());
-    NamedCommands.registerCommand("findNoteLong", autofindNoteLong);
-    NamedCommands.registerCommand("findNote", autofindNote);
-    NamedCommands.registerCommand("enableCamera", runOnce(() -> shooterCamera.useLimelight(true)));
-    NamedCommands.registerCommand("returnToCenter", robo.pathToSub);
-    
+    new EventTrigger("shooterAutoSpeed").onTrue(shooter.setAutoSpeed());
+    new EventTrigger("shooterSubSpeed").onTrue(shooter.setSubSpeed());
+    new EventTrigger("shooterStageSpeed").onTrue(shooter.setStageSpeed());
+    new EventTrigger("shooterAmpSpeed").onTrue(shooter.setAmpSpeed());
+    new EventTrigger("shooterOffSpeed").onTrue(shooter.setOffSpeed());
+    new EventTrigger("shoot").onTrue(intake.shoot());
+    new EventTrigger("armIntakePosition").onTrue(arm.setIntakePosition());
+    new EventTrigger("armStageShootPosition").onTrue(arm.setStageShootPosition());
+    new EventTrigger("armAutoShootPosition").onTrue(arm.setAutoShootPosition());
+    new EventTrigger("armSubShootPosition").onTrue(arm.setSubShootPosition());
+    new EventTrigger("armAmpPosition").onTrue(arm.setAmpPosition());
+    new EventTrigger("intakeOn").onTrue(intake.intakeAutoStop());
+    new EventTrigger("intakeSlow").onTrue(intake.intakeSlow());
+    new EventTrigger("armAutoAndShoot").onTrue(armAutoAndShoot());
+    new EventTrigger("findNoteLong").onTrue(autofindNoteLong);
+    new EventTrigger("findNote").onTrue(autofindNote);
+    new EventTrigger("enableCamera").onTrue(runOnce(() -> shooterCamera.useLimelight(true)));
 
     //PPHolonomicDriveController.setRotationTargetOverride(Optional.of(getSpeakerRotation()));
 
@@ -320,6 +319,8 @@ public class RobotContainer {
         () -> SmartDashboard.getBoolean("noteLoaded", false));
     readyToShoot.onTrue(runOnce(() -> SmartDashboard.putBoolean("readyToShoot", true)));
     readyToShoot.onFalse(runOnce(() -> SmartDashboard.putBoolean("readyToShoot", false)));
+
+    createIntakeTrigger();
 
 /*     // All of these bindings are for System Indentification and will be disabled at competition
     drv.leftTrigger().and(drv.pov(0)).whileTrue(drivetrain.runDriveQuasiTest(Direction.kForward));
